@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <title>Copy Text to Clipboard</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <textarea id="jailbreak" style="display: none"></textarea>
+        <div id="converter">
+            <h2>Ascii</h2>
+            <textarea name="" id="output-ascii" cols="30" rows="4"></textarea>
+            <button id="copyAscii">Copy</button>
+            <h2>Hex</h2>
+            <textarea name="" id="output-hex" cols="30" rows="4"></textarea>
+            <button id="copyHex">Copy</button> 
+            <h2>Base64</h2>
+            <textarea name="" id="output-b64" cols="30" rows="4"></textarea>
+            <button id="copyB64">Copy</button> 
+            <button id="copyJB">Copy Jailbreak</button> 
+        </div>
+        
+        <script src="script.js"></script>
+    </body>
+</html>
