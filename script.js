@@ -1,4 +1,4 @@
-const jailbreak = document.getElementById("jailbreak"); 
+const jailbreak = document.getElementById("jailbreak");
 const copyJB = document.getElementById("copyJB");
 const copyAscii = document.getElementById("copyAscii");
 const copyHex = document.getElementById("copyHex");
@@ -10,17 +10,19 @@ const outputHex = document.querySelector("#output-hex");
 const outputB64 = document.querySelector("#output-b64");
 
 clearAll.addEventListener("click", () => {
-    [outputAscii, outputB64, outputHex].forEach(element => {
+    [outputAscii, outputB64, outputHex].forEach((element) => {
         element.value = "";
-    });        
+    });
 });
 
-copyJB.addEventListener("click", () => copyText(jailbreak.value));
-copyAscii.addEventListener("click", () => copyText(outputAscii.value));
-copyHex.addEventListener("click", () => copyText(outputHex.value)); 
-copyB64.addEventListener("click", () => copyText(outputB64.value));
+copyJB.addEventListener("click", (event) => copyText(jailbreak.value, event));
+copyAscii.addEventListener("click", (event) =>
+    copyText(outputAscii.value, event)
+);
+copyHex.addEventListener("click", (event) => copyText(outputHex.value, event));
+copyB64.addEventListener("click", (event) => copyText(outputB64.value, event));
 
-async function copyText(text) {
+async function copyText(text, event) {
     await navigator.clipboard.writeText(text);
     event.target.textContent = "Copied";
     setTimeout(() => {
@@ -36,22 +38,24 @@ function textToHex(text) {
     return hex;
 }
 
-[outputAscii, outputHex, outputB64].forEach(output => {
+[outputAscii, outputHex, outputB64].forEach((output) => {
     output.addEventListener("input", () => {
         const text = output.value;
         if (text) {
-            switch(output.id) {
-                case "output-ascii": 
+            switch (output.id) {
+                case "output-ascii":
                     outputHex.value = textToHex(text);
                     outputB64.value = window.btoa(text);
                     break;
                 case "output-hex":
                     const hex = text;
                     outputAscii.value = String.fromCharCode(
-                        ...hex.match(/.{1,2}/g).map(byte => parseInt(byte, 16))
+                        ...hex
+                            .match(/.{1,2}/g)
+                            .map((byte) => parseInt(byte, 16))
                     );
                     outputB64.value = window.btoa(outputAscii.value);
-                    break;    
+                    break;
                 case "output-b64":
                     const b64 = text;
                     outputAscii.value = window.atob(b64);
