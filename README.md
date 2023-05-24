@@ -1,2 +1,8 @@
-Learning more about git commands and webpage hosting
-The website doesn't serve much purpose, just a small project used for converting between different encodings and using clipboard.
+# Learning more about git commands and webpage hosting
+## Goal: Learn more about git, html, css, jss
+
+## Todo
+- [x] Convert Ascii to Base64
+- [x] Convert Ascii to Hex
+- [x] Reactive textareas
+- [x] Copy texts to clipboard
