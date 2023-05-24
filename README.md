@@ -1,5 +1,6 @@
 # Learning more about git commands and webpage hosting
-## Goal: Learn more about git, html, css, jss
+## Goal: Learn more about git, html, css, js
+s
 
 ## Todo
 - [x] Convert Ascii to Base64
