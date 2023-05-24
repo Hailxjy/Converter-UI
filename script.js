@@ -5,7 +5,7 @@ const copyHex = document.getElementById("copyHex");
 const copyB64 = document.getElementById("copyB64");
 
 const outputAscii = document.querySelector("#output-ascii");
-const outputHex = document.querySelector("#output-hex"); 
+const outputHex = document.querySelector("#output-hex");
 const outputB64 = document.querySelector("#output-b64");
 
 copyJB.addEventListener("click", () => {
@@ -13,14 +13,14 @@ copyJB.addEventListener("click", () => {
     copyJB.textContent = "Copied";
     setTimeout(() => {
         copyJB.textContent = "Copy Jailbreak";
-    }, 500);  
+    }, 500);
 });
 
 copyAscii.addEventListener("click", () => {
     copyText(outputAscii.value);
     copyAscii.textContent = "Copied";
     setTimeout(() => {
-        copyAscii.textContent = "Copy"; 
+        copyAscii.textContent = "Copy";
     }, 500);
 });
 
@@ -39,7 +39,7 @@ copyB64.addEventListener("click", () => {
         copyB64.textContent = "Copy";
     }, 500);
 });
-async function copyText(text) { 
+async function copyText(text) {
     await navigator.clipboard.writeText(text);
 }
 
@@ -67,7 +67,9 @@ outputAscii.addEventListener("input", () => {
 outputHex.addEventListener("input", () => {
     const hex = outputHex.value;
     if (hex) {
-        const text = String.fromCharCode(...hex.match(/.{1,2}/g).map(byte => parseInt(byte, 16)));
+        const text = String.fromCharCode(
+            ...hex.match(/.{1,2}/g).map((byte) => parseInt(byte, 16))
+        );
         outputAscii.value = text;
         outputB64.value = window.btoa(text);
     } else {
@@ -85,5 +87,5 @@ outputB64.addEventListener("input", () => {
     } else {
         outputAscii.value = "";
         outputHex.value = "";
-    } 
+    }
 });
