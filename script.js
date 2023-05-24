@@ -13,6 +13,11 @@ clearAll.addEventListener("click", () => {
     [outputAscii, outputB64, outputHex].forEach((element) => {
         element.value = "";
     });
+    const originalText = clearAll.textContent;
+    clearAll.textContent = "Cleared";
+    setTimeout(() => {
+        clearAll.textContent = originalText;
+    }, 500);
 });
 
 copyJB.addEventListener("click", (event) => copyText(jailbreak.value, event));
@@ -24,9 +29,10 @@ copyB64.addEventListener("click", (event) => copyText(outputB64.value, event));
 
 async function copyText(text, event) {
     await navigator.clipboard.writeText(text);
+    const originalText = event.target.textContent;
     event.target.textContent = "Copied";
     setTimeout(() => {
-        event.target.textContent = "Copy";
+        event.target.textContent = originalText;
     }, 500);
 }
 
